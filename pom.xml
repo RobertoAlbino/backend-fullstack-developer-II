@@ -58,7 +58,6 @@
       </plugin>
     </plugins>
   </build>
-
   <dependencies>
     <dependency>
       <groupId>io.thorntail</groupId>
@@ -68,11 +67,6 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>${postgresql.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-      <version>6.0.13.Final</version>
     </dependency>
     <dependency>
       <groupId>org.ebaysf.web</groupId>

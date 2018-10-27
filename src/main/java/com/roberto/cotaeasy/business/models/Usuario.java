@@ -1,4 +1,4 @@
-package com.roberto.cotaeasy.infraestructure.repository;
+package com.roberto.cotaeasy.business.models;
 
 import com.roberto.cotaeasy.business.enums.Perfil;
 import com.roberto.cotaeasy.utils.MD5Utils;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity(name = "usuarios")
-public class Usuario {
+public class Usuario implements Entidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,11 +39,12 @@ public class Usuario {
     @NotNull
     private Perfil perfil;
 
-    public long getId() {
+    @Override
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

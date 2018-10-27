@@ -1,4 +1,4 @@
-package com.roberto.cotaeasy.infraestructure.repository;
+package com.roberto.cotaeasy.business.models;
 
 import java.io.Serializable;
 
