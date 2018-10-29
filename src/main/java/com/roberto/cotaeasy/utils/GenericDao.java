@@ -7,11 +7,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 
-/**
- * Dao Generico para operações CRUD encapsulando o EntityManager
- * @author jhony.pereira
- * @param <T> Tipo da Entidade no GenericDao
- */
 public class GenericDao<T extends Entidade> {
 
     private final EntityManager em;
