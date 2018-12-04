@@ -2,6 +2,7 @@ package com.roberto.cotaeasy.business.queries;
 
 import com.roberto.cotaeasy.business.dto.LoginDto;
 import com.roberto.cotaeasy.business.models.Usuario;
+import com.roberto.cotaeasy.utils.MD5Utils;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,11 +18,11 @@ public class UsuarioQueryServiceImpl {
     @Inject
     private EntityManager entityManager;
 
-    public boolean loginValido(LoginDto dto) {
-        TypedQuery<String> query = entityManager
-                .createQuery("SELECT nome FROM usuarios where email = :email and senha = :senha", String.class);
+    public Usuario loginValido(LoginDto dto) {
+        TypedQuery<Usuario> query = entityManager
+                .createQuery("SELECT usuario FROM usuarios usuario where usuario.email = :email and usuario.senha = :senha", Usuario.class).setMaxResults(1);
         query.setParameter("email", dto.getEmail());
-        query.setParameter("senha", dto.getSenha());
-        return query.getFirstResult() > 0 ? true : false;
+        query.setParameter("senha", MD5Utils.encript(dto.getSenha()));
+        return query.getSingleResult();
     }
 }

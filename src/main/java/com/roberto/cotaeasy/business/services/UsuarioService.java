@@ -24,17 +24,20 @@ public class UsuarioService {
     private PersistenceService<Usuario> persistenceService;
 
     public RespostaDefault login(LoginDto dto) {
-        Boolean loginValido = usuarioQueryService.loginValido(dto);
-        return new RespostaDefaultBuilder(loginValido)
-                .addObjeto(loginValido)
-                .addMensagem(loginValido ? "Login válido" : "Login inválido")
+        Usuario usuario = usuarioQueryService.loginValido(dto);
+        Boolean sucessoLogin = usuario != null;
+        return new RespostaDefaultBuilder()
+                .addSucesso(sucessoLogin)
+                .addObjeto(usuario)
+                .addMensagem(sucessoLogin ? "Login válido" : "Login inválido")
                 .build();
     }
 
     public RespostaDefault criar(UsuarioDto dto) {
         Usuario novoUsuario = persistenceService.insert(new UsuarioConverter().toEntity(dto));
         Boolean usuarioValido = novoUsuario != null;
-        return new RespostaDefaultBuilder(usuarioValido)
+        return new RespostaDefaultBuilder()
+                .addSucesso(usuarioValido)
                 .addObjeto(novoUsuario)
                 .addMensagem(usuarioValido ? "Usuário criado com sucesso" : "Não foi possível criar o usuário")
                 .build();

@@ -1,7 +1,5 @@
 package com.roberto.cotaeasy.rest.common;
 
-import java.util.Objects;
-
 public class RespostaDefault {
 
     private Boolean sucesso;
@@ -32,11 +30,11 @@ public class RespostaDefault {
         private String mensagem;
         private Object objeto;
 
-        public RespostaDefaultBuilder(Boolean sucesso) {
-            if (Objects.isNull(sucesso)) {
-                throw new IllegalArgumentException("Sucesso é obrigatório");
-            }
+        public RespostaDefaultBuilder() {}
+
+        public RespostaDefaultBuilder addSucesso(Boolean sucesso) {
             this.sucesso = sucesso;
+            return this;
         }
 
         public RespostaDefaultBuilder addMensagem(String mensagem) {
